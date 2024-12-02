@@ -8,11 +8,18 @@ import { languages } from "../../data/languages";
 export default function Main() {
   const [languagesData, setClick] = useState(languages);
 
+  const updatedLanguages = [...languagesData];
+
   const clickHandler = (id) => {
-    const updatedLanguages = [...languagesData];
     updatedLanguages[id - 1].isClicked = !updatedLanguages[id - 1].isClicked;
     setClick(updatedLanguages);
   };
+
+  const languagesClicked = updatedLanguages.map(
+    (language) => language.isClicked
+  );
+
+  const isOneCliked = languagesClicked.includes(true);
 
   return (
     <main>
@@ -36,17 +43,25 @@ export default function Main() {
         </section>
 
         <section>
-          {languages.map((language) => {
-            return (
-              <Card
-                key={language.id}
-                id={language.id}
-                title={language.title}
-                description={language.description}
-                isClicked={language.isClicked}
-              />
-            );
-          })}
+          {isOneCliked ? (
+            languages.map((language) => {
+              return (
+                <Card
+                  key={language.id}
+                  id={language.id}
+                  title={language.title}
+                  description={language.description}
+                  isClicked={language.isClicked}
+                />
+              );
+            })
+          ) : (
+            <div className="card mb-3 ">
+              <div className="card-body">
+                <h5 className="card-title">Nessun linuaggio selezionato</h5>
+              </div>
+            </div>
+          )}
         </section>
       </div>
     </main>

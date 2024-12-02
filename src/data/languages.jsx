@@ -32,7 +32,7 @@ export const languages = [
     title: "Express",
     description:
       "Express è un framework per applicazioni web minimalista e veloce per Node.js. Fornisce strumenti robusti per creare applicazioni web e API e semplifica la gestione delle rotte e delle richieste.",
-    status: "hide",
+    isClicked: false,
   },
   {
     id: 6,
