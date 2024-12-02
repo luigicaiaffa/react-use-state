@@ -1,0 +1,13 @@
+/* ! Reset & Utils */
+
+/* ! Layout */
+
+/* # Header */
+header {
+  background-color: #f4f4f4;
+}
+
+.title-header {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}

@@ -1,4 +1,4 @@
-export default languages = [
+export const languages = [
   {
     id: 1,
     title: "HTML",
