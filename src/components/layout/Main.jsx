@@ -1,6 +1,19 @@
+import { useState } from "react";
+
+import Button from "../Button";
+import Card from "../Card";
+
 import { languages } from "../../data/languages";
 
 export default function Main() {
+  const [languagesData, setClick] = useState(languages);
+
+  const clickHandler = (id) => {
+    const updatedLanguages = [...languagesData];
+    updatedLanguages[id - 1].isClicked = !updatedLanguages[id - 1].isClicked;
+    setClick(updatedLanguages);
+  };
+
   return (
     <main>
       <div className="container">
@@ -9,11 +22,13 @@ export default function Main() {
             <ul className="navbar-nav">
               {languages.map((language) => {
                 return (
-                  <li key={language.id} className="nav-item list-btn">
-                    <button className="btn btn-primary">
-                      {language.title}
-                    </button>
-                  </li>
+                  <Button
+                    key={language.id}
+                    id={language.id}
+                    title={language.title}
+                    isClicked={language.isClicked}
+                    clickHandler={clickHandler}
+                  />
                 );
               })}
             </ul>
@@ -21,14 +36,17 @@ export default function Main() {
         </section>
 
         <section>
-          {
-            <div key={languages[0].id} className="card">
-              <div className="card-body">
-                <h5 className="card-title">{languages[0].title}</h5>
-                <p className="card-text">{languages[0].description}</p>
-              </div>
-            </div>
-          }
+          {languages.map((language) => {
+            return (
+              <Card
+                key={language.id}
+                id={language.id}
+                title={language.title}
+                description={language.description}
+                isClicked={language.isClicked}
+              />
+            );
+          })}
         </section>
       </div>
     </main>
