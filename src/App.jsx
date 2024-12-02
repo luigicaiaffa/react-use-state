@@ -5,8 +5,6 @@ import Header from "./components/layout/Header";
 import Main from "./components/layout/Main";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Header />
